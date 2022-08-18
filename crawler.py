@@ -22,21 +22,27 @@ async def async_call_rest_api(params):
 res = call_rest_api(method='get_naver_news_urls', params=params)
 
 url_params = []
-for url in res['urls']:
-    m = p.search(url)
-    if m:
-        print(url)
+for _ in range(10):
+    for url in res['urls']:
+        m = p.search(url)
+        if m:
+            print(url)
 
-        params = {
-            'url-id1': str(m.group(1)),
-            'url-id2': str(m.group(2)),
-        }
+            params = {
+                'url-id1': str(m.group(1)),
+                'url-id2': str(m.group(2)),
+            }
 
-        url_params.append(params)
+            url_params.append(params)
 
 async def main():
     tasks = (async_call_rest_api(url_param) for url_param in url_params)
+    import time
+    st = time.time()
     L = await asyncio.gather(*tasks)
+    ed = time.time()
+    print('Number of tasks: ', len(url_params))
+    print('Processed time: ', ed - st)
     print(L)
 
 asyncio.run(main())

@@ -50,11 +50,11 @@ def call(method='', params={}):
     if method == 'get_naver_news':
         url1 = parse.quote(params['url-id1'])
         url2 = parse.quote(params['url-id2'])
-        page = requests.get('http://localhost:5000/%s/url1=%s&url2=%s' % (method, url1, url2))
+        page = requests.get('http://localhost:8000/%s/url1=%s&url2=%s' % (method, url1, url2))
         return page.text
     elif method == 'get_naver_news_urls':
         signature = params['signature']
-        page = requests.get('http://localhost:5000/%s/signature=%s' % (method, signature))
+        page = requests.get('http://localhost:8000/%s/signature=%s' % (method, signature))
         return page.text
 
     return "Method %s Not Implemented Error" % method

@@ -10,7 +10,14 @@ from io import BytesIO
 from functools import wraps, update_wrapper 
 from datetime import datetime
 
+from gevent.pywsgi import WSGIServer
+
 app = Flask(__name__, static_url_path='/static')
+
+@app.route('/')
+def index():
+
+    return "This is Crawling Processing Server"
 
 @app.route('/get_naver_news/url1=<url_a>&url2=<url_b>')
 def getNewsContent(url_a, url_b):
@@ -22,6 +29,5 @@ def getNewsUrls(signature):
 
     return jsonify(requests_utils.getNaverNewsUrls(signature))
 
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    WSGIServer(("127.0.0.1", 8000), app).serve_forever()
