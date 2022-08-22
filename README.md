@@ -15,3 +15,6 @@ $ run_server.sh
 ```
 $ run.sh
 ```
+## WORK TODO
+- Python으로 pdf reader 구현, pdf에서 text 추출
+- 
