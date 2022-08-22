@@ -5,7 +5,7 @@
 
 ## Terminal 1
 ```
-$ celery -A web_scraper_server.celery_app --concurrency 5 worker --loglevel=info
+$ celery -A web_scraper_server.celery_app worker --concurrency 5 --loglevel=info
 ```
 ## Terminal 2 
 ```
