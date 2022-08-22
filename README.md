@@ -17,4 +17,6 @@ $ run.sh
 ```
 ## WORK TODO
 - Python으로 pdf reader 구현, pdf에서 text 추출
-- 
+- Investing.com crawl
+- 통계청 crawl
+- CNBC News crawl
